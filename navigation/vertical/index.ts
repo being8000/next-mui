@@ -9,11 +9,30 @@ import CreditCardOutline from 'mdi-material-ui/CreditCardOutline'
 import AccountPlusOutline from 'mdi-material-ui/AccountPlusOutline'
 import AlertCircleOutline from 'mdi-material-ui/AlertCircleOutline'
 import GoogleCirclesExtended from 'mdi-material-ui/GoogleCirclesExtended'
+import { OverridableComponent } from '@mui/material/OverridableComponent'
+import { VerticalNavItemsType } from '@/@core/layouts/types'
+import { SvgIconTypeMap } from '@mui/material'
+import { ReactNode } from 'react'
 
 // ** Type import
-import { VerticalNavItemsType } from '@/@core/layouts/types'
+export type NavLinkItem = {
+  path?: string
+  title: string
+  openInNewTab?: boolean
+  icon?: ReactNode | OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
+    muiName: string;
+  }
+  action?: string
+  subject?: string
+  disabled?: boolean
+  badgeContent?: string
+  externalLink?: boolean
+  isSection?: boolean
+  badgeColor?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning' | 'info'
+  children?: NavLinkItem[]
+}
 
-const navigation = (): VerticalNavItemsType => {
+const navigation = (): NavLinkItem[] => {
   return [
     {
       title: 'Dashboard',
@@ -26,9 +45,6 @@ const navigation = (): VerticalNavItemsType => {
       path: '/account-settings'
     },
     {
-      sectionTitle: 'Pages'
-    },
-    {
       title: 'Login',
       icon: Login,
       path: '/pages/login',
@@ -37,8 +53,21 @@ const navigation = (): VerticalNavItemsType => {
     {
       title: 'Register',
       icon: AccountPlusOutline,
-      path: '/pages/register',
-      openInNewTab: true
+      openInNewTab: true,
+      children: [
+        {
+          title: 'child-register',
+          icon: AccountPlusOutline,
+          path: '/pages/register',
+          openInNewTab: true
+        },
+        {
+          title: 'child-2',
+          icon: AlertCircleOutline,
+          path: '/pages/error',
+          openInNewTab: true
+        },
+      ]
     },
     {
       title: 'Error',
@@ -47,32 +76,46 @@ const navigation = (): VerticalNavItemsType => {
       openInNewTab: true
     },
     {
-      sectionTitle: 'User Interface'
-    },
-    {
-      title: 'Typography',
-      icon: FormatLetterCase,
-      path: '/typography'
-    },
-    {
-      title: 'Icons',
-      path: '/icons',
-      icon: GoogleCirclesExtended
-    },
-    {
-      title: 'Cards',
-      icon: CreditCardOutline,
-      path: '/cards'
-    },
-    {
-      title: 'Tables',
-      icon: Table,
-      path: '/tables'
-    },
-    {
-      icon: CubeOutline,
-      title: 'Form Layouts',
-      path: '/form-layouts'
+      title: 'User Interface',
+      icon: AlertCircleOutline,
+      children: [
+        {
+          title: 'Typography',
+          icon: FormatLetterCase,
+          path: '/typography'
+        },
+        {
+          title: 'Icons',
+          path: '/icons',
+          icon: GoogleCirclesExtended
+        },
+        {
+          title: 'Cards',
+          icon: CreditCardOutline,
+          children: [
+            {
+              title: 'third-1',
+              icon: Table,
+              path: '/third-1'
+            },
+            {
+              icon: CubeOutline,
+              title: 'third-2',
+              path: '/third-1'
+            }
+          ]
+        },
+        {
+          title: 'Tables',
+          icon: Table,
+          path: '/tables'
+        },
+        {
+          icon: CubeOutline,
+          title: 'Form Layouts',
+          path: '/form-layouts'
+        }
+      ]
     }
   ]
 }

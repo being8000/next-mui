@@ -18,7 +18,7 @@ import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButto
 import themeConfig from '@/configs/themeConfig'
 
 // ** Types
-import { NavLink } from '@/@core/layouts/types'
+import { NavLinkItem } from '@/navigation/vertical'
 import { Settings } from '@/@core/context/settingsContext'
 
 // ** Custom Components Imports
@@ -28,9 +28,10 @@ import UserIcon from '@/layouts/components/UserIcon'
 import { handleURLQueries } from '@/@core/layouts/utils'
 
 interface Props {
-  item: NavLink
+  item: NavLinkItem
   settings: Settings
   navVisible?: boolean
+  onClick?: () => void
   toggleNavVisibility: () => void
 }
 
@@ -42,7 +43,7 @@ const MenuNavLink = styled(ListItemButton)<
   borderTopRightRadius: 100,
   borderBottomRightRadius: 100,
   color: theme.palette.text.primary,
-  padding: theme.spacing(2.25, 3.5),
+  // padding: theme.spacing(2.25, 3.5),
   transition: 'opacity .25s ease-in-out',
   '&.active, &.active:hover': {
     boxShadow: theme.shadows[3],
@@ -66,7 +67,7 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
   // ** Hooks
   const router = useRouter()
 
-  const IconTag: ReactNode = item.icon
+  const IconTag: ReactNode = item.icon as ReactNode
 
   const isNavLinkActive = () => {
     if (router.pathname === item.path || handleURLQueries(router, item.path)) {
@@ -81,11 +82,11 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
       disablePadding
       className='nav-link'
       disabled={item.disabled || false}
-      sx={{ mt: 1.5, px: '0 !important' }}
+      sx={{ mt: 0, px: '0 !important' }}
     >
       <Link passHref href={item.path === undefined ? '/' : `${item.path}`}>
         <MenuNavLink
-          component={'a'}
+          component={'span'}
           className={isNavLinkActive() ? 'active' : ''}
           {...(item.openInNewTab ? { target: '_blank' } : null)}
           onClick={e => {
@@ -98,7 +99,7 @@ const VerticalNavLink = ({ item, navVisible, toggleNavVisibility }: Props) => {
             }
           }}
           sx={{
-            pl: 5.5,
+            pl: 4,
             ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' })
           }}
         >

@@ -17,6 +17,7 @@
     "@mui/lab": "^5.0.0-alpha.133",
     "@mui/material": "^5.13.4",
     "apexcharts": "^3.41.0",
+    "apexcharts-clevision": "^3.28.5",
     "autoprefixer": "10.4.14",
     "clsx": "^1.2.1",
     "eslint": "8.42.0",

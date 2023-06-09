@@ -59,7 +59,7 @@ const AppBarContent = (props: Props) => {
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
         {hiddenSm ? null : (
           <Box
-
+            component='a'
             target='_blank'
             rel='noreferrer'
             sx={{ mr: 4, display: 'flex' }}

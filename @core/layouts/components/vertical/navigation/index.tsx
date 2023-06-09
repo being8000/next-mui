@@ -18,8 +18,10 @@ import Drawer from './Drawer'
 import VerticalNavItems from './VerticalNavItems'
 import VerticalNavHeader from './VerticalNavHeader'
 
+import Sidebar from '../../sidebar'
 // ** Util Import
 import { hexToRGBA } from '@/@core/utils/hex-to-rgba'
+import { NavLinkItem } from '@/navigation/vertical'
 
 interface Props {
   hidden: boolean
@@ -29,7 +31,7 @@ interface Props {
   navVisible: boolean
   toggleNavVisibility: () => void
   setNavVisible: (value: boolean) => void
-  verticalNavItems?: VerticalNavItemsType
+  verticalNavItems?: NavLinkItem[]
   saveSettings: (values: Settings) => void
   verticalNavMenuContent?: (props?: any) => ReactNode
   afterVerticalNavMenuContent?: (props?: any) => ReactNode
@@ -133,7 +135,14 @@ const Navigation = (props: Props) => {
               userVerticalNavMenuContent(props)
             ) : (
               <List className='nav-items' sx={{ transition: 'padding .25s ease', pr: 4.5 }}>
-                <VerticalNavItems
+                {/* <VerticalNavItems
+                  groupActive={groupActive}
+                  setGroupActive={setGroupActive}
+                  currentActiveGroup={currentActiveGroup}
+                  setCurrentActiveGroup={setCurrentActiveGroup}
+                  {...props}
+                /> */}
+                <Sidebar
                   groupActive={groupActive}
                   setGroupActive={setGroupActive}
                   currentActiveGroup={currentActiveGroup}
