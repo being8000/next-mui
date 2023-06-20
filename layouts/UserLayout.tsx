@@ -11,7 +11,7 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import VerticalLayout from '@/@core/layouts/VerticalLayout'
 
 // ** Navigation Imports
-import VerticalNavItems from '@/navigation/vertical'
+import VerticalNavItems from '@/router'
 
 // ** Component Import
 import UpgradeToProButton from './components/UpgradeToProButton'

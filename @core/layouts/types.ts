@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { Settings } from '@/@core/context/settingsContext'
 import { OverridableComponent } from '@mui/material/OverridableComponent'
 import { SvgIconTypeMap } from '@mui/material'
-import { NavLinkItem } from '@/navigation/vertical'
+import { NavLinkItem } from '@/router'
 
 export type ContentWidth = 'full' | 'boxed'
 

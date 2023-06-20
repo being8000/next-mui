@@ -101,7 +101,19 @@ const navigation = (): NavLinkItem[] => {
             {
               icon: CubeOutline,
               title: 'third-2',
-              path: '/third-1'
+              path: '/third-1',
+              children: [
+                {
+                  title: 'third-1',
+                  icon: Table,
+                  path: '/third-1'
+                },
+                {
+                  icon: CubeOutline,
+                  title: 'third-2',
+                  path: '/third-1'
+                }
+              ]
             }
           ]
         },

@@ -18,7 +18,7 @@ import ListItemButton, { ListItemButtonProps } from '@mui/material/ListItemButto
 import themeConfig from '@/configs/themeConfig'
 
 // ** Types
-import { NavLinkItem } from '@/navigation/vertical'
+import { NavLinkItem } from '@/router'
 import { Settings } from '@/@core/context/settingsContext'
 
 // ** Custom Components Imports
